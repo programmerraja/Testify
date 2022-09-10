@@ -1,0 +1,26 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Attach to Chrome",
+			"port": 9222,
+			"request": "attach",
+			"type": "pwa-chrome",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Start Web Application",
+			"program": "${workspaceRoot}/util/index.js",
+			"runtimeArgs": [
+				"--trace-warnings"
+			],
+			"resolveSourceMapLocations": [
+				"${workspaceFolder}/**",
+				"!(**/node_modules/**)"
+			]
+		}
+    ]
+		
+}

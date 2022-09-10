@@ -1,0 +1,17 @@
+Id,Feature,Areas,Action,flow,Referece
+P001,Add Prospect,Prospect,Add Prospect,Create Manually,
+P001,Add Prospect,Prospect,Add Prospect,Upload CSV,
+P001,Add Prospect,Prospect,Add Prospect,Import Gsheet,
+P001,Add Prospect,Playbook,,Deal Stage Automation,PB001
+P001,Add Prospect,CRM Settings,CRM Settings,Import Prospect,
+P001,Add Prospect,Integrations,Gsheet,pipedrive,
+P002,Start Cadence,Prospect,,Add To Cadence,
+P002,Start Cadence,Cadence,,Playbook,PB001
+P002,Start Cadence,Cadence,,Start Cadence,P001
+P002,Start Cadence,Cadence,,Add prospect from main cadence page,
+P002,Start Cadence,Cadence,,Add Prospect to cadence from in cadence,
+PB001,Playbook,Cadence Automation,,List Automation,
+PB001,Playbook,Cadence Automation,,Chaining Cadence,
+PB001,Playbook,Cadence Automation,,Deal Stage Automation,
+PB001,Playbook,Cadence Automation,,Create manual Task,T001
+T001,Manual Task,Tasks,,Create manual Task,
