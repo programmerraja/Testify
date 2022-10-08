@@ -35,7 +35,9 @@ mongoose.connect(process.env.MONGODB_URI,  {
   useUnifiedTopology:true,
   useFindAndModify: false, 
   useCreateIndex: true
-});
+}).then(()=>{
+  require("./util")
+})
 
 
 // Send every other request to the React app  

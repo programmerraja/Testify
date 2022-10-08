@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Uploader from './page/Uploader';
+import Editor from './page/Editor';
 
 import './App.css';
 
@@ -14,6 +15,8 @@ function App() {
     <Router basename='/'>
       <Routes>
         <Route exact path="/" element={<Uploader/>}/>
+        <Route exact path="/editor" element={<Editor/>}/>
+
       </Routes>
      
     </Router>

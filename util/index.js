@@ -1,16 +1,15 @@
 const csv = require('csv-parser')
 const fs = require('fs')
+const {TestCases,User}=require('../models/')
 const results = [];
 
 let parsedJSON=[]
-fs.createReadStream('data.csv')
+fs.createReadStream('./util/data.csv')
   .pipe(csv())
   .on('data', (data) => results.push(data))
   .on('end', () => {
-    // console.log(results);
     let previousFeature=""
     let tempJSON={}
-    // console.log(results)
     results.forEach(csvContent => {
         
         Object.keys(csvContent).forEach(key => {
@@ -19,7 +18,9 @@ fs.createReadStream('data.csv')
                     tempJSON={};
                 }
                 tempJSON[key]=csvContent[key];
-               
+            }
+            if(key === "Id"){
+                tempJSON[key]=csvContent[key];
             }
             if(key==="Areas"){
                 //check the value "areas" : "Prospect"
@@ -30,7 +31,6 @@ fs.createReadStream('data.csv')
                         tempJSON[csvContent[key]].push(csvContent["flow"])
                     }
                 }else{
-                   
                     if(csvContent["Referece"] !== ''){
                         tempJSON[csvContent[key]]=[{[csvContent["flow"]]:csvContent["Referece"]}]
                     }else{
@@ -41,13 +41,15 @@ fs.createReadStream('data.csv')
         });
         if(previousFeature !== tempJSON['Feature']) {
             parsedJSON.push(tempJSON);
+            console.log(tempJSON,"\n");
             previousFeature=tempJSON['Feature'];
         }
     });
     if(parsedJSON.length === 0){
         parsedJSON.push(tempJSON);
     }
-    console.log(JSON.stringify(parsedJSON));
+    TestCases.insertMany(parsedJSON).then(res=>{console.log(res)})
+    // console.log(JSON.stringify(parsedJSON));
   });
 
 
